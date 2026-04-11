@@ -1,0 +1,70 @@
+✅ ✅ ✅ Chained Select
+
+👉 ajax.php
+
+<?php
+ob_start();
+session_start();
+include "config/config.php";
+?>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<select id="schedule_day" name="schedule_day_id">
+    <option value="">-- Select a Day --</option>
+    <?php
+    $statement = $pdo->prepare("SELECT * FROM schedule_days ORDER BY order1 ASC");
+    $statement->execute();
+    $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+    foreach ($result as $row) {
+        ?>
+        <option value="<?php echo $row['id']; ?>"><?php echo $row['day']; ?></option>
+        <?php
+    }
+    ?>
+</select>
+<select id="schedule" name="schedule_id">
+    <option value="">-- Select a Schedule --</option>
+</select>
+<script>
+    $(document).ready(function() {
+        $('#schedule_day').on('change',function() {
+            var scheduleDayId = $(this).val();
+            $('#schedule').html('<option value="">-- Select a Schedule --</option>');
+            if(scheduleDayId) {
+                $.ajax({
+                    url: 'ajax1.php',
+                    type: 'POST',
+                    data: { schedule_day_id: scheduleDayId },
+                    dataType: 'json',
+                    success: function(response) {
+                        if (response.length > 0) {
+                            $.each(response, function(index,schedule) {
+                                $('#schedule').append(
+                                    `<option value='${schedule.id}'>${schedule.name} - ${schedule.time}</option>`
+                                );
+                            });
+                        } else {
+                            $('#schedule').append('<option value="">No schedules found</option>');
+                        }
+                    }
+                });
+            }
+        });
+    });
+</script>
+
+
+👉 ajax1.php
+
+<?php
+ob_start();
+session_start();
+include "config/config.php";
+
+$scheduleDayId = $_POST['schedule_day_id'];
+
+$statement = $pdo->prepare("SELECT * FROM schedules WHERE schedule_day_id=? ORDER BY item_order");
+$statement->execute([$scheduleDayId]);
+$schedules = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+header('Content-Type: application/json');
+echo json_encode($schedules);

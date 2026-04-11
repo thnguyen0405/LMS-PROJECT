@@ -1,0 +1,5 @@
+vendor/
+.env
+node_modules/
+eduzora_lms_final_project/vendor/
+eduzora_lms_final_project/.env

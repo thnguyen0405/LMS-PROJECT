@@ -1,0 +1,21 @@
+# LMS Project
+
+A simple Learning Management System (LMS) built with **PHP**, **HTML**, and **CSS**, with **Mailtrap** integration for email testing.
+
+## Features
+
+- User registration and login
+- Course listing and course details
+- Student enrollment
+- Admin or instructor management
+- Form validation
+- Email testing with Mailtrap
+- Clean frontend built with HTML and CSS
+
+## Technologies Used
+
+- PHP
+- HTML
+- CSS
+- Mailtrap
+
