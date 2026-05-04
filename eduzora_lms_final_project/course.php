@@ -824,6 +824,33 @@ if(isset($_POST['form_enquery'])) {
                             </table>
                         </div>
                     </div>
+                    <div class="include mt_30">
+    <h3>Learning Location:</h3>
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <tr>
+                <th><i class="fas fa-map-marker-alt"></i> Campus:</th>
+                <td>Ho Chi Minh City University of Technology (HCMUT)</td>
+            </tr>
+            <tr>
+                <th><i class="fas fa-location-arrow"></i> Address:</th>
+                <td>268 Ly Thuong Kiet Street, Ward 14, District 10, Ho Chi Minh City, Vietnam</td>
+            </tr>
+            <tr>
+                <th><i class="fas fa-map"></i> Google Maps:</th>
+                <td>
+                    <a 
+                        href="https://www.google.com/maps/search/?api=1&query=268+Ly+Thuong+Kiet+Street+Ward+14+District+10+Ho+Chi+Minh+City+Vietnam" 
+                        target="_blank"
+                        class="btn btn-primary btn-sm"
+                    >
+                        View Map
+                    </a>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
                     <div class="coupon">
                         <h3>Have any coupon?</h3>
                     
